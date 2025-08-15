@@ -1,0 +1,294 @@
+/* Mobile-specific styles for Employee Leave Tracker */
+
+/* Mobile navigation */
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: flex;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background-color: #2c3e50;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 2rem;
+        transition: left 0.3s ease;
+        z-index: 1000;
+    }
+    
+    .nav-menu.active {
+        left: 0;
+    }
+    
+    .nav-link {
+        width: 90%;
+        text-align: center;
+        padding: 1rem;
+        margin: 0.5rem 0;
+        border-radius: 8px;
+    }
+    
+    .nav-logout {
+        width: 90%;
+        margin-top: 2rem;
+    }
+    
+    .logout-btn {
+        width: 100%;
+        padding: 1rem;
+        border-radius: 8px;
+        background-color: rgba(231, 76, 60, 0.1);
+    }
+    
+    /* Hamburger animation */
+    .nav-toggle.active span:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    
+    .nav-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .nav-toggle.active span:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+}
+
+/* Mobile layout adjustments */
+@media (max-width: 768px) {
+    .main-content {
+        padding: 15px;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+    
+    .card {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .card-title {
+        font-size: 1.1rem;
+    }
+    
+    /* Mobile-friendly buttons */
+    .btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
+        min-height: 48px;
+        font-size: 1rem;
+    }
+    
+    .btn-large {
+        min-height: 60px;
+        font-size: 1.2rem;
+        padding: 1.25rem 2rem;
+    }
+    
+    /* Mobile grid */
+    .row {
+        margin: 0 -5px;
+    }
+    
+    .col, .col-6 {
+        padding: 0 5px;
+        margin-bottom: 1rem;
+    }
+    
+    .col-6 {
+        flex: 0 0 100%;
+    }
+    
+    /* Mobile forms */
+    .form-control {
+        font-size: 16px; /* Prevent zoom on iOS */
+        min-height: 48px;
+        padding: 1rem;
+    }
+    
+    .form-label {
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    /* Mobile tables */
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .table {
+        min-width: 600px;
+    }
+    
+    /* Mobile cards layout */
+    .card-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .card-item {
+        background: white;
+        border-radius: 8px;
+        padding: 1rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .card-item-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.5rem;
+    }
+    
+    .card-item-title {
+        font-weight: 600;
+        color: #2c3e50;
+    }
+    
+    .card-item-meta {
+        font-size: 0.875rem;
+        color: #666;
+        margin-bottom: 0.5rem;
+    }
+    
+    .card-item-actions {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: 1rem;
+    }
+    
+    .card-item-actions .btn {
+        flex: 1;
+        margin-bottom: 0;
+    }
+}
+
+/* Touch-friendly improvements */
+@media (max-width: 768px) {
+    /* Larger touch targets */
+    button, .btn, input[type="submit"], input[type="button"] {
+        min-height: 48px;
+        min-width: 48px;
+    }
+    
+    /* Better spacing for touch */
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Improved readability */
+    body {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+    
+    h1 { font-size: 1.75rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.25rem; }
+    
+    /* Status indicators */
+    .status {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    /* Clock display for time tracking */
+    .clock-display {
+        font-size: 2rem;
+        font-weight: 300;
+        text-align: center;
+        padding: 2rem 1rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+    }
+    
+    .clock-time {
+        font-size: 2.5rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+    
+    .clock-date {
+        font-size: 1rem;
+        opacity: 0.9;
+    }
+    
+    /* Action buttons for time tracking */
+    .time-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin: 2rem 0;
+    }
+    
+    .time-btn {
+        padding: 1.5rem;
+        font-size: 1.25rem;
+        font-weight: 600;
+        border-radius: 12px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s;
+        min-height: 80px;
+    }
+    
+    .time-btn-in {
+        background: linear-gradient(135deg, #27ae60, #2ecc71);
+        color: white;
+    }
+    
+    .time-btn-out {
+        background: linear-gradient(135deg, #e74c3c, #ec7063);
+        color: white;
+    }
+    
+    .time-btn:active {
+        transform: scale(0.98);
+    }
+    
+    .time-btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+}
+
+/* Very small screens (phones in portrait) */
+@media (max-width: 480px) {
+    .nav-brand h1 {
+        font-size: 1.25rem;
+    }
+    
+    .main-content {
+        padding: 10px;
+    }
+    
+    .card {
+        padding: 0.75rem;
+    }
+    
+    .btn-large {
+        font-size: 1.1rem;
+        padding: 1rem 1.5rem;
+    }
+    
+    .clock-time {
+        font-size: 2rem;
+    }
+    
+    .time-btn {
+        min-height: 70px;
+        font-size: 1.1rem;
+        padding: 1.25rem;
+    }
+}
