@@ -6,12 +6,12 @@
  */
 
 return [
-    'host' => 'localhost',
-    'dbname' => 'employee_tracker',
-    'username' => 'primacom_bloguser',
-    'password' => '', // Set your password here
-    'charset' => 'utf8mb4',
-    'port' => 3306,
+    'host' => getenv('DB_HOST') ?: 'localhost',
+    'dbname' => getenv('DB_NAME') ?: '',
+    'username' => getenv('DB_USER') ?: '',
+    'password' => getenv('DB_PASS') ?: '',
+    'charset' => getenv('DB_CHARSET') ?: 'utf8mb4',
+    'port' => getenv('DB_PORT') ?: 3306,
     'options' => [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
