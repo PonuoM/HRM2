@@ -21,6 +21,20 @@ spl_autoload_register(function ($className) {
     return false;
 });
 
+// Load environment variables from .env if available
+$envFile = APP_ROOT . '/.env';
+if (file_exists($envFile)) {
+    $env = parse_ini_file($envFile, false, INI_SCANNER_TYPED);
+    if ($env !== false) {
+        foreach ($env as $key => $value) {
+            if (getenv($key) === false) {
+                putenv("$key=$value");
+                $_ENV[$key] = $value;
+            }
+        }
+    }
+}
+
 // Load configuration files
 $GLOBALS['config'] = [
     'app' => require_once APP_ROOT . '/src/Config/app.php',

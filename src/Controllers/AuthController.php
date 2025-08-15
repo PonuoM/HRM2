@@ -16,7 +16,10 @@ class AuthController extends BaseController {
             header('Location: /dashboard');
             exit;
         }
-        
+
+        $tokenName = $this->config['app']['security']['csrf_token_name'];
+        $token = CsrfService::getToken();
+
         ob_start();
         ?>
         <div class="container">
@@ -35,6 +38,7 @@ class AuthController extends BaseController {
                                 <label class="form-label" for="password">รหัสผ่าน</label>
                                 <input type="password" id="password" name="password" class="form-control" required>
                             </div>
+                            <input type="hidden" name="<?= htmlspecialchars($tokenName) ?>" value="<?= htmlspecialchars($token) ?>">
                             <button type="submit" class="btn btn-primary btn-large">เข้าสู่ระบบ</button>
                         </form>
                     </div>
@@ -54,6 +58,15 @@ class AuthController extends BaseController {
      * Handle login
      */
     public function login() {
+        $tokenName = $this->config['app']['security']['csrf_token_name'];
+        $token = $_POST[$tokenName] ?? '';
+        if (!CsrfService::validate($token)) {
+            $this->jsonResponse([
+                'success' => false,
+                'message' => 'ไม่สามารถยืนยันความถูกต้องของคำขอได้'
+            ], 400);
+        }
+
         // This will be implemented in a later task
         $this->jsonResponse([
             'success' => false,

@@ -30,15 +30,22 @@ class DatabaseService {
      */
     private function connect() {
         try {
+            // Ensure required configuration values are present
+            foreach (['host', 'dbname', 'username', 'password'] as $key) {
+                if (empty($this->config[$key])) {
+                    throw new Exception("Database configuration '{$key}' is missing.");
+                }
+            }
+
             $dsn = "mysql:host={$this->config['host']};port={$this->config['port']};dbname={$this->config['dbname']};charset={$this->config['charset']}";
-            
+
             $this->connection = new PDO(
                 $dsn,
                 $this->config['username'],
                 $this->config['password'],
                 $this->config['options']
             );
-            
+
         } catch (PDOException $e) {
             throw new Exception("Database connection failed: " . $e->getMessage());
         }
